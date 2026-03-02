@@ -1,0 +1,52 @@
+# ==========================================================
+# DeepSpeci Configuration File
+# ==========================================================
+# This file is loaded at startup by config/loader.py.
+# Environment variables (.env) override values defined here.
+# ==========================================================
+
+app_name: DeepSpeci
+version: "1.0.0"
+environment: development    # development | production
+log_level: INFO
+api_host: "0.0.0.0"
+api_port: 8000
+ui_port: 8501
+audit_log_path: logs/audit.jsonl
+
+# ----------------------------------------------------------
+# Jira Integration
+# ----------------------------------------------------------
+jira:
+  url: ""                   # e.g. https://your-org.atlassian.net
+  username: ""              # Jira email address
+  token: ""                 # Jira API token
+  project_key: ""           # Default project key
+
+# ----------------------------------------------------------
+# Confluence Integration
+# ----------------------------------------------------------
+confluence:
+  url: ""                   # e.g. https://your-org.atlassian.net
+  username: ""
+  token: ""
+  space_key: ""
+
+# ----------------------------------------------------------
+# LLM Provider Configuration
+# ----------------------------------------------------------
+# Supported providers: mock | openai | azure_openai | copilot | ollama
+# Switching provider requires ONLY changing 'provider' below
+# (and supplying the relevant api_key / endpoint).
+# ----------------------------------------------------------
+llm:
+  provider: mock            # ← change this to switch LLM
+  model_name: gpt-4o
+  api_key: ""
+  endpoint: ""              # Required for azure_openai / ollama
+  temperature: 0.2
+  max_tokens: 4096
+  stream: true
+  # GitHub Copilot specific
+  copilot_token: ""
+  copilot_endpoint: "http://localhost:3000"
